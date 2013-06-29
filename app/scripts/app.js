@@ -1,13 +1,42 @@
 'use strict';
 
-angular.module('ProjectStatus2App', [])
-  .config(function ($routeProvider) {
+/*#######################################################################
+
+  Normally like to break AngularJS apps into the following folder structure
+  at a minimum:
+
+  /app
+      /controllers
+      /directives
+      /services
+      /partials
+      /views
+
+  #######################################################################*/
+var app = angular.module('ProjectStatus2App', []);
+
+app.config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      .when('/dashboard', {
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl'
+      })
+      .when('/overview', {
+        templateUrl: 'views/overview.html',
+        controller: 'ProjectOverviewCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/dashboard'
       });
   });
+
+app.controller('NavbarController', function ($scope, $location) {
+    $scope.getClass = function (path) {
+        if ($location.path().substr(0, path.length) == path) {
+            return true
+        } else {
+            return false;
+        }
+    }
+});
+

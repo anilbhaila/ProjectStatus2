@@ -6,13 +6,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title>Project Status</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <!-- build:css({.tmp,app}) styles/main.css -->
-        <link rel="stylesheet" href="styles/bootstrap.css">
+        <link rel="stylesheet" href="styles/bootstrap.min.css">
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
 </head>
@@ -26,22 +26,63 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#/dashboard">
+            Projects Status
+          </a>
+          <div class="nav-collapse collapse" >
+            <ul class="nav" ng-controller="NavbarController">
+              <li ng-class="{'active':getClass('/dashboard')}"><a href="#/dashboard">Dashboard</a></li>
+              <li ng-class="{'active':getClass('/overview')}"><a href="#/overview">Overview</a></li>
+              <li ng-class="{'active':getClass('/new')}"><a href="#/new">New Project</a></li>
+              <li ng-class="{'active':getClass('/about')}"><a href="#/about">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
+    <!-- Application main content here -->
+    <div class="container" ng-view="" animated-view></div>
+
+    <div id="footer">
+        <div class="navbar navbar-fixed-bottom">
+            <div class="navbar-inner">
+                <div class="container">
+                    <footer>
+                        <div class="row">
+                            <div class="span4">
+                                Created by Lin Yong
+                            </div>
+                            <div class="span4">
+                                Wilmar Consultancy Services
+                            </div>
+                            <div class="span4">
+                                Business Technology Consulting
+                            </div>
+                        </div>
+                   </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="bower_components/angular/angular.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="scripts/controllers/projectOverview.js"></script>
+    <script src="scripts/directives/animatedView.js"></script>
+    <script src="scripts/services/projectsService.js"></script>
     <!-- endbuild -->
 
         <!-- build:js scripts/plugins.js -->
@@ -65,7 +106,7 @@
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="scripts/controllers/ProjectOverview.js"></script>
+        <script src="scripts/services/projectsService.js"></script>
         <!-- endbuild -->
 </body>
 </html>
