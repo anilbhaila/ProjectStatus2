@@ -1,23 +1,22 @@
-<div class="hero-unit">
-  <h1>Delayed Projects</h1>
-  <p>Here lists all the delayed projects</p>
-  <ul>
-      <li ng-repeat="project in delayedProjects">{{project}}</li>
-  </ul>
-</div>
+<div class="view">
 
-<hr>
+  <div class="container">
+    <header>
+        <h3>Dashboard</h3>
+    </header>
 
-<div class="row span12 cardContainer">
-  <div class="span4 card" ng-repeat="project in allProjects | orderBy:'status'">
-      <div ng-class="getStatus(project.id)">
-        {{project.projectName}} : {{project.status}}
+    <div class="row span12 cardContainer">
+      <div class="span4 card" ng-repeat="project in allProjects | orderBy:'status'">
+          <div ng-class="getStatus(project.id)">
+            {{project.projectName}} : {{project.status}}
+          </div>
+          <div class="cardBody">
+              {{project.projectManager}}
+            <br>
+          </div>
+          <a href="#/projectstatus/{{project.id}}" class="cardBody btn-link">View Status</a>
       </div>
-      <div class="cardBody">
-          {{project.projectManager}}
-        <br>
-      </div>
-      <a href="#/projectstatus/{{project.id}}" class="cardBody btn-link">View Status</a>
+    </div>
   </div>
-</div>
 
+</div>

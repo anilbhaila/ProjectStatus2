@@ -1,0 +1,108 @@
+<div class="projectStatus view">
+    <div class="container">
+        <header>
+            <h3>【{{ project.projectName}}】 项目状态</h3>
+        </header>
+        <div class="row">
+            <div class="span12">
+                <div class="indent">
+                <h4>项目综合情况</h4>
+                </div>
+                <div class="hero-unit">
+                    <dl class="dl-horizontal">
+                        <dt>Status</dt>
+                        <dd ng-class="getStatus(project.id)"><strong>{{ project.status}}</strong></dd>
+                        <dt>Project Manager</dt>
+                        <dd>{{ project.projectManager}}</dd>
+                        <dt>Progress</dt>
+                        <dd>{{ project.projectProgress}}</dd>
+                        <dt>Contract Revenue</dt>
+                        <dd>{{ project.contractRevenue | currency:"￥"}}</dd>
+                        <dt>Budget cost</dt>
+                        <dd>{{ project.budgetCost | currency:"￥"}}</dd>
+                        <dt>Cost</dt>
+                        <dd>{{ project.cost | currency:"￥"}}</dd>
+                        <dt>Budget status</dt>
+                        <dd>{{ project.budgetStatus}}</dd>
+                    </dl>
+                </div>
+            </div>
+            <br /><br />
+            <div class="span12">
+                <div class="indent">
+                    <h4>里程碑</h4>
+                </div>
+
+                <table class="table table-hover table-striped table-condensed table-bordered projectsTable">
+                    <thead>
+                        <tr>
+                            <th>风险</th>
+                            <th ng-click="setOrder('priority')">重要程度</th>
+                            <th ng-click="setOrder('status')">状态</th>
+                            <th>建议</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-hide="risks || risks.length > 0" class="error">
+                            <td colspan="4">
+                                <div class="text-center"><strong>本项目没有风险</strong></div>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="risk in risks | orderBy:orderby:reverse">
+                            <td>
+                                {{ risk.desc }}
+                            </td>
+                            <td>
+                                {{ risk.priority }}
+                            </td>
+                            <td>
+                                {{ risk.status }}
+                            </td>
+                            <td>
+                                {{ risk.solution }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="span12">
+                <div class="indent">
+                    <h4>风险</h4>
+                </div>
+                <table class="table table-hover table-striped table-condensed table-bordered projectsTable">
+                    <thead>
+                        <tr>
+                            <th>风险</th>
+                            <th ng-click="setOrder('priority')">重要程度</th>
+                            <th ng-click="setOrder('status')">状态</th>
+                            <th>建议</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-hide="risks || risks.length > 0" class="error">
+                            <td colspan="4">
+                                <div class="text-center"><strong>本项目没有风险</strong></div>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="risk in risks | orderBy:orderby:reverse">
+                            <td>
+                                {{ risk.desc }}
+                            </td>
+                            <td>
+                                {{ risk.priority }}
+                            </td>
+                            <td>
+                                {{ risk.status }}
+                            </td>
+                            <td>
+                                {{ risk.solution }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

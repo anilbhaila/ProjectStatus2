@@ -17,17 +17,26 @@ var app = angular.module('ProjectStatus2App', []);
 
 app.config(function ($routeProvider) {
     $routeProvider
-      .when('/dashboard', {
-        templateUrl: 'views/dashboard.html',
-        controller: 'DashboardCtrl'
-      })
-      .when('/overview', {
-        templateUrl: 'views/overview.html',
-        controller: 'ProjectOverviewCtrl'
-      })
-      .otherwise({
-        redirectTo: '/dashboard'
-      });
+      .when('/dashboard',
+        {
+          controller: 'DashboardCtrl',
+          templateUrl: 'views/dashboard.html'
+        })
+      //Define a route that has a route parameter in it (:projectID)
+      .when('/projectstatus/:projectID',
+        {
+          controller: 'ProjectStatusCtrl',
+          templateUrl: 'views/projectStatus.html'
+        })
+      .when('/overview',
+        {
+          controller: 'ProjectOverviewCtrl',
+          templateUrl: 'views/overview.html'
+        })
+      .otherwise(
+        {
+          redirectTo: '/dashboard'
+        });
   });
 
 app.controller('NavbarController', function ($scope, $location) {
