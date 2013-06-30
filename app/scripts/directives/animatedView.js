@@ -1,5 +1,5 @@
-﻿//This directive adds custom animations to views as they enter or leave a screen
-//Note that AngularJS 1.1.4 now has an ng-animate directive but this one can be used when you 
+//This directive adds custom animations to views as they enter or leave a screen
+//Note that AngularJS 1.1.4 now has an ng-animate directive but this one can be used when you
 //want complete control or when you can't use that version of AngularJS yet
 app.directive('animatedView', ['$route', '$anchorScroll', '$compile', '$controller', function ($route, $anchorScroll, $compile, $controller) {
     return {
@@ -63,7 +63,7 @@ app.directive('animatedView', ['$route', '$anchorScroll', '$compile', '$controll
                 switch (animationType) {
                     case 'fadeOut':
                         $(element.children()).animate({
-                            //opacity: 0.0, 
+                            //opacity: 0.0,
                         }, defaults.duration, function () {
                             animateEnterView('slideLeft');
                         });
